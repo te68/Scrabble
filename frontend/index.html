@@ -1,0 +1,411 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script defer src="index.js"> </script>
+        <link rel = "stylesheet"
+        type = "text/css"
+        href = "./stylesheets/board.css" />
+        <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap"
+        rel="stylesheet">
+    </head>
+    <body>
+    <div class="new-game-form">
+
+
+    </div>
+
+    <div id="table-container">
+        <table id="board">
+        <!-- first row -->
+        <tr>
+            <td class="double-letter">DOUBLE LETTER SCORE</td>
+            <td>r3c2</td>
+            <td>r3,c3</td>
+            <td>r3,c4</td>
+            <td>r3,c5</td>
+            <td>r3,c6</td>
+            <td>r3,c7</td>
+            <td>r3,c8</td>
+            <td>r3,c9</td>
+            <td>r3,c10</td>
+            <td>r3,c11</td>
+            <td>r3,c12</td>
+            <td>r3,c13</td>
+            <td>r3,c14</td>
+            <td class="double-letter">DOUBLE LETTER SCORE</td>
+        </tr>
+        <!-- row 2 -->
+        <tr>
+                <td>R3,C1</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R3,C3</td>
+                <td>R3,C4</td>
+                <td>R3,C5</td>
+                <td>R3,C6</td>
+                <td>R3,C7</td>
+                <td>R3,C8</td>
+                <td>R3,C9</td>
+                <td>R3,C10</td>
+                <td>R3,C11</td>
+                <td>R3,C12</td>
+                <td>R3,C13</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R3,C15</td>
+
+        </tr>
+        <!-- row 3 -->
+        <tr>
+                <td>R3,C1</td>
+                <td>R3,C2</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R3,C4</td>
+                <td>R3,C5</td>
+                <td>R3,C6</td>
+                <td>R3,C7</td>
+                <td>R3,C8</td>
+                <td>R3,C8</td>
+                <td>R3,C9</td>
+                <td>R3,C10</td>
+                <td>R3,C11</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R3,C14</td>
+                <td>R3,C15</td>
+
+        </tr>
+        <!-- row 4 -->
+        <tr>
+                <td>R3,C1</td>
+                <td>R3,C2</td>
+                <td>R3,C3</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R3,C5</td>
+                <td>R3,C6</td>
+                <td>R3,C7</td>
+                <td>R3,C8</td>
+                <td>R3,C8</td>
+                <td>R3,C9</td>
+                <td>R3,C10</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R3,C11</td>
+                <td>R3,C14</td>
+                <td>R3,C15</td>
+
+        </tr>
+        <!-- row 5 -->
+        <tr>
+                <td>R10,C1</td>
+                <td>R10,C2</td>
+                <td>R10,C3</td>
+                <td>R10,C4</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R10,C6</td>
+                <td>R10,C7</td>
+                <td>R10,C8</td>
+                <td>R10,C9</td>
+                <td>R10,C10</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R10,C12</td>
+                <td>R10,C13</td>
+                <td>R10,C14</td>
+                <td>R10,C15</td>
+
+        </tr>
+        <!-- row 6 -->
+        <tr>
+                <td>R10,C1</td>
+                <td>R10,C2</td>
+                <td>R10,C3</td>
+                <td>R10,C4</td>
+                <td>R10,C5</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R10,C7</td>
+                <td>R10,C8</td>
+                <td>R10,C9</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R10,C11</td>
+                <td>R10,C12</td>
+                <td>R10,C13</td>
+                <td>R10,C14</td>
+                <td>R10,C15</td>
+
+        </tr>
+        <!-- row 7 -->
+        <tr>
+                <td>R10,C1</td>
+                <td>R10,C2</td>
+                <td>R10,C3</td>
+                <td>R10,C4</td>
+                <td>R10,C5</td>
+                <td>R10,C6</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R10,C8</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R10,C10</td>
+                <td>R10,C11</td>
+                <td>R10,C12</td>
+                <td>R10,C13</td>
+                <td>R10,C14</td>
+                <td>R10,C15</td>
+
+        </tr>
+        <!-- row 8 -->
+        <tr>
+                <td>R10,C1</td>
+                <td>R10,C2</td>
+                <td>R10,C3</td>
+                <td>R10,C4</td>
+                <td>R10,C5</td>
+                <td>R10,C6</td>
+                <td>R10,C7</td>
+                <td id="center-star-cell"><img src = "./stylesheets/center-star.png" id="center-star-picture"></td>
+                <td>R10,C9</td>
+                <td>R10,C10</td>
+                <td>R10,C11</td>
+                <td>R10,C12</td>
+                <td>R10,C13</td>
+                <td>R10,C14</td>
+                <td>R10,C15</td>
+
+        </tr>
+            <!-- row 9 -->
+        <tr>
+                <td>R10,C1</td>
+                <td>R10,C2</td>
+                <td>R10,C3</td>
+                <td>R10,C4</td>
+                <td>R10,C5</td>
+                <td>R10,C6</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R10,C8</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R10,C10</td>
+                <td>R10,C11</td>
+                <td>R10,C12</td>
+                <td>R10,C13</td>
+                <td>R10,C14</td>
+                <td>R10,C15</td>
+        </tr>
+            <!-- row 10 -->
+        <tr>
+                <td>R10,C1</td>
+                <td>R10,C2</td>
+                <td>R10,C3</td>
+                <td>R10,C4</td>
+                <td>R10,C5</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R10,C7</td>
+                <td>R10,C8</td>
+                <td>R10,C9</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R10,C11</td>
+                <td>R10,C12</td>
+                <td>R10,C13</td>
+                <td>R10,C14</td>
+                <td>R10,C15</td>
+
+        </tr>
+            <!-- row 11 -->
+        <tr>
+                <td>R3,C1</td>
+                <td>R3,C2</td>
+                <td>R3,C3</td>
+                <td>R3,C4</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R3,C6</td>
+                <td>R3,C7</td>
+                <td>R3,C8</td>
+                <td>R3,C9</td>
+                <td>R3,C10</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R3,C12</td>
+                <td>R3,C13</td>
+                <td>R3,C14</td>
+                <td>R3,C15</td>
+
+        </tr>
+            <!-- row 12 -->
+        <tr>
+                <td>R3,C1</td>
+                <td>R3,C2</td>
+                <td>R3,C3</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R3,C5</td>
+                <td>R3,C6</td>
+                <td>R3,C7</td>
+                <td>R3,C8</td>
+                <td>R3,C8</td>
+                <td>R3,C9</td>
+                <td>R3,C10</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R3,C11</td>
+                <td>R3,C14</td>
+                <td>R3,C15</td>
+        </tr>
+            <!-- row 13 -->
+        <tr>
+                <td>R3,C1</td>
+                <td>R3,C2</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R3,C4</td>
+                <td>R3,C5</td>
+                <td>R3,C6</td>
+                <td>R3,C7</td>
+                <td>R3,C8</td>
+                <td>R3,C8</td>
+                <td>R3,C9</td>
+                <td>R3,C10</td>
+                <td>R3,C11</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R3,C14</td>
+                <td>R3,C15</td>
+
+        </tr>
+            <!-- row 14 -->
+        <tr>
+                <td>R14,C1</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R14,C3</td>
+                <td>R14,C4</td>
+                <td>R14,C5</td>
+                <td>R14,C6</td>
+                <td>R14,C7</td>
+                <td>R14,C8</td>
+                <td>R14,C8</td>
+                <td>R14,C9</td>
+                <td>R14,C10</td>
+                <td>R14,C11</td>
+                <td>R14,C12</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R14,C15</td>
+
+        </tr>
+            <!-- row 15 -->
+        <tr>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+                <td>R3,C2</td>
+                <td>R3,C3</td>
+                <td>R3,C4</td>
+                <td>R3,C5</td>
+                <td>R3,C6</td>
+                <td>R3,C7</td>
+                <td>R3,C8</td>
+                <td>R3,C8</td>
+                <td>R3,C9</td>
+                <td>R3,C10</td>
+                <td>R3,C11</td>
+                <td>R3,C12</td>
+                <td>R3,C14</td>
+                <td class="double-letter">DOUBLE LETTER SCORE</td>
+        </tr>
+        </table>
+    <table id="tiles-and-quantities">
+            <tr class="t-and-q-row">
+                <th class="t-and-q-cell">Letter</th>  <th class="t-and-q-cell">Score</th>
+            </tr>
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">A</td> <td class="t-and-q-cell">9 </td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">B</td> - <td class="t-and-q-cell">2</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">C</td> - <td class="t-and-q-cell">2</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">D</td> - <td class="t-and-q-cell">4</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">E</td> - <td class="t-and-q-cell">12</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">F</td> - <td class="t-and-q-cell">2</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">G</td> - <td class="t-and-q-cell">3</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">H</td> - <td class="t-and-q-cell">2</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">I</td> - <td class="t-and-q-cell">9</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">J</td> - <td class="t-and-q-cell">1</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">K</td> - <td class="t-and-q-cell">1</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">L</td> - <td class="t-and-q-cell">4</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">M</td> - <td class="t-and-q-cell">2</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">N</td> - <td class="t-and-q-cell">6</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">O</td> - <td class="t-and-q-cell">8</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">P</td> - <td class="t-and-q-cell">2</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">Q</td> - <td class="t-and-q-cell">1</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">R</td> - <td class="t-and-q-cell">6</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">S</td> - <td class="t-and-q-cell">4</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">T</td> - <td class="t-and-q-cell">6</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">U</td> - <td class="t-and-q-cell">4</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">V</td> - <td class="t-and-q-cell">2</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">W</td> - <td class="t-and-q-cell">2</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">X</td> - <td class="t-and-q-cell">1</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">Y</td> - <td class="t-and-q-cell">2</td>
+            </tr>
+
+            <tr class="t-and-q-row">
+                <td class="t-and-q-cell">Z</td> - <td class="t-and-q-cell">1</td>
+            </tr>
+    </table>
+</div>
+</body>
+</html>

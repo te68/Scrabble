@@ -1,0 +1,98 @@
+table, tr, td {
+    border: 4px solid black;
+    align:center;
+    text-align: center;
+    border-collapse: separate;
+    table-layout: fixed;
+    border-radius: 6px;
+    -moz-border-radius:6px;
+    width: 50px;
+    height: 50px;
+    background: rgb(240, 206, 56);
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.5em;
+}
+table{
+    background: white;
+}
+
+td:hover{
+    cursor:pointer;
+    background: rgb(238, 237, 170)
+}
+
+.double-letter{
+    background: #AADDEE;
+}
+
+
+#center-star-cell{
+    background: #EEAAAA
+}
+
+#center-star-cell:hover{
+    cursor:pointer;
+    background: rgb(238, 237, 170)
+}
+
+#center-star-picture{
+    width:45px;
+    height:45px;
+}
+
+#center-star-picture:hover{
+    cursor:pointer;
+    background: rgb(238, 237, 170)
+}
+
+body{
+    background: #EBC;
+}
+
+#table-container{
+    text-align:CENTER;
+    /* background: white; */
+    display: inline-block;
+}
+
+#tiles-and-quantities{
+    border: 4px solid black;
+    align:center;
+    text-align: center;
+    border-collapse: collapse;
+    table-layout: fixed;
+    border-radius: 6px;
+    -moz-border-radius:6px;
+    width: auto;
+    height: 50px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5em;
+}
+
+.t-and-q-row{
+    border: 4px solid black;
+    align:center;
+    text-align: center;
+    border-collapse: collapse;
+    table-layout: fixed;
+    border-radius: 6px;
+    -moz-border-radius:6px;
+    width: 50px;
+    height: 20px;
+    background: #c19a6b;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5em;
+}
+
+.t-and-q-cell{
+    border: 4px solid black;
+    align:center;
+    text-align: center;
+    border-collapse: collapse;
+    table-layout: fixed;
+    border-radius: 6px;
+    -moz-border-radius:6px;
+    width: 50px;
+    height: 20px;
+    background: #f5c283;
+}
