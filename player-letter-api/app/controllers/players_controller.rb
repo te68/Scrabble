@@ -10,12 +10,8 @@ def show
   render json: PlayerSerializer.new(player).to_serialized_json
 end
 
-def create
-  nameArray = params[:name].split(",")
-  nameArray.each do |name|
-    Player.create!(name: name, score: 0)
-  end
-end
+# def create
+# end
 
 def start_new_game
   Letter.delete_all()
@@ -24,7 +20,37 @@ def start_new_game
       player.destroy()
     end
   end
+
   createLetters()
+  nameArray = params[:name].split(",")
+  # byebug
+  createPlayers(nameArray)
+  initial_letters()
+end
+
+def createPlayers(nameArray)
+  nameArray.each do |name|
+    Player.create!(name: name, score: 0)
+  end
+end
+
+def initial_letters()
+  Player.all.each do |player|
+    if player.id!= 1
+      # byebug
+      draw_seven(player)
+    end
+  end
+end
+
+def draw_seven(player)
+  7.times do
+    bag_of_letters = Player.find(1).letters # [ #<>, #<>]
+    random_letter = bag_of_letters.sample
+    random_letter.player_id = player.id
+    random_letter.save
+  end
+  # byebug
 end
 
 def createLetters
@@ -58,7 +84,7 @@ def createLetters
   2.times { Letter.create(tileb) }
   2.times { Letter.create(tilec) }
   4.times { Letter.create(tiled) }
-  1.times { Letter.create(tilee) }
+  12.times { Letter.create(tilee) }
   2.times { Letter.create(tilef) }
   3.times { Letter.create(tileg) }
   2.times { Letter.create(tileh) }
@@ -77,8 +103,8 @@ def createLetters
   4.times { Letter.create(tileu) }
   2.times { Letter.create(tilev) }
   2.times { Letter.create(tilew) }
-  1.times { Letter.create(tiley) }
-  2.times { Letter.create(tilex) }
+  1.times { Letter.create(tilex) }
+  2.times { Letter.create(tiley) }
   1.times { Letter.create(tilez) }
 end
 

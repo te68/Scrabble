@@ -40,7 +40,7 @@ tilez  = {name: "Z", value: 10, player_id: 1}
 2.times { Letter.create(tileb) }
 2.times { Letter.create(tilec) }
 4.times { Letter.create(tiled) }
-1.times { Letter.create(tilee) }
+12.times { Letter.create(tilee) }
 2.times { Letter.create(tilef) }
 3.times { Letter.create(tileg) }
 2.times { Letter.create(tileh) }
@@ -59,6 +59,6 @@ tilez  = {name: "Z", value: 10, player_id: 1}
 4.times { Letter.create(tileu) }
 2.times { Letter.create(tilev) }
 2.times { Letter.create(tilew) }
-1.times { Letter.create(tiley) }
-2.times { Letter.create(tilex) }
+1.times { Letter.create(tilex) }
+2.times { Letter.create(tiley) }
 1.times { Letter.create(tilez) }
