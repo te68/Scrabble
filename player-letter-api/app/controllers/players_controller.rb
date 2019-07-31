@@ -53,6 +53,21 @@ def draw_seven(player)
   # byebug
 end
 
+def draw_replacements()
+  player = Player.find(params[:id])
+  newLettersNeeded = 7 - player.letters.length
+  if (newLettersNeeded > Player.find(1).letters.length)
+    newLettersNeeded = Player.find(1).letters.length
+  end
+  newLettersNeeded.times do
+    bag_of_letters = Player.find(1).letters # [ #<>, #<>]
+    random_letter = bag_of_letters.sample
+    random_letter.player_id = player.id
+    random_letter.save
+  end
+
+end
+
 def createLetters
   tilea  = {name: "A", value: 1, player_id: 1}
   tileb  = {name: "B", value: 3, player_id: 1}

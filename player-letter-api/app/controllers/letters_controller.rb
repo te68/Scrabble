@@ -13,7 +13,9 @@ class LettersController < ApplicationController
   def create
   end
 
-  def delete
+  def destroy
+    letter = Letter.find_by(id: params[:id])
+    letter.destroy
   end
 
 end

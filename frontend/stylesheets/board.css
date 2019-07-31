@@ -21,10 +21,14 @@ td:hover{
     background: rgb(238, 237, 170)
 }
 
+.double-letter-picked:hover{
+  cursor:pointer;
+  background: rgb(238, 237, 170)
+}
+
 .double-letter{
     background: #AADDEE;
 }
-
 
 #center-star-cell{
     background: #EEAAAA

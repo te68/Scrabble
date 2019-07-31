@@ -8,7 +8,7 @@ def to_serialized_json
   object = {
     include: {
       letters:{
-        only: [:name, :value]
+        only: [:id, :name, :value]
       }
     },
     except: [:updated_at, :created_at]

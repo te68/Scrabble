@@ -1,7 +1,8 @@
  PLAYERS_URL = "http://localhost:3000/players"
  let playerIds
- 
- 
+ let gameOver = false
+
+
  function makeNewGameButton() {
     const newGameButton = document.createElement('button')
     newGameButton.innerText = "Start New Game"
@@ -30,12 +31,12 @@
        return box.value
      })
      clearBoard()
-     resetGame(names) 
-     Array.from(newGameForm.children).slice(0,4).forEach( child => { 
+     resetGame(names)
+     Array.from(newGameForm.children).slice(0,4).forEach( child => {
         child.value = ''
      })
    })
-   
+
  }
 
 function clearBoard() {
@@ -51,7 +52,6 @@ function clearBoard() {
 }
 
 function resetGame(names) {
-  // console.log("resetGames argument is" + names)
   nameString = names.join(",")
   fetch('http://localhost:3000/players/start-new-game', {
     method: "POST",
@@ -78,24 +78,18 @@ function fetchAPlayer(id) {
   allThePlayersData = fetch(`http://localhost:3000/players/${id}`)
   allThePlayersData.then(res => res.json())
   .then(playerJSON => {
-    console.log(playerJSON)
     fillPlayerTiles(playerJSON)
-    // console.log(playerIds)
-    // console.log(allThePlayers)
   })
 }
 
 
-function listenToNextTurnButton() { 
+function listenToNextTurnButton() {
   let index = 0
   document.querySelector("#next-turn").addEventListener("click", function() {
     if (index === playerIds.length) {
       index = 0
     }
-      console.log(playerIds)
-      console.log(index)
-      console.log(playerIds[index])
-      fetchAPlayer(playerIds[index] + 4)
+      fetchAPlayer(playerIds[index] + (playerIds.length))
       index += 1
   })
 }
@@ -105,42 +99,66 @@ function fillPlayerTiles(playerJSON){
   let playerNameInHeading = document.querySelector("#player-name")
   playerNameInHeading.innerText = `${playerJSON.name}'s Tiles`
   let playerTiles = document.querySelector("#player-tiles").children[0].children[0].children //[<td>, <td>]
-  for (let i = 0; i < playerTiles.length; i++) {
+  for (let i = 0; i < playerLetters.length; i++) {
     playerTiles[i].innerHTML = `<span class="letter-on-tile">${playerLetters[i].name}</span><span class="tiny-space"> </span><sub class="score-on-tile">${playerLetters[i].value}</sub>`
     playerTiles[i].setAttribute("letter", playerLetters[i].name)
     playerTiles[i].setAttribute("value", playerLetters[i].value)
+    playerTiles[i].id = playerLetters[i].id
   }
+  const player1 = fetch(`http://localhost:3000/players/1`)
+  player1
+  .then(res => res.json())
+  .then(body => {
+    if (!gameOver && body.letters.length === 0) {
+      alert('Bag is empty')
+      gameOver = true
+    }
+  })
 }
 
 function listenToLetterTiles() {
   let playerTileRow = document.getElementById('player-tile-row')
   playerTileRow.addEventListener("click",(event) => {
-    let letter
-    let value
-    if (event.target.className != "letter-tile") {
-        letter = event.target.parentElement.getAttribute("letter")
-        value = event.target.parentElement.getAttribute("value")
+    if (event.target.className != "letter-tile" && !event.target.classList.contains("active-tile")) {
+        event.target.parentElement.classList.add("active-tile")
     }
-    else {
-        letter = event.target.getAttribute("letter")
-        value = event.target.getAttribute("value")
+    else if (!event.target.parentElement.classList.contains("active-tile")) {
+        event.target.classList.add("active-tile")
     }
-
-    listenToBoardTiles(letter, value)
   })
 }
 
-function listenToBoardTiles(letter, value) {
-  // console.log(letter)
-  // console.log(value)
+function listenToBoardTiles(letter, value, id) {
   //select ALL tds from board table
   //genenral structure <table> <tr> 15<td>s </tr> x15 </table>
   let board = document.querySelector("#board")
   board.addEventListener("click", (event) => {
-    if (event.target.tagName === "TD" || event.target.tagName === "IMG") {
+    const tile = document.querySelectorAll('.active-tile')[document.querySelectorAll('.active-tile').length - 1]
+    letter = tile.getAttribute("letter")
+    value = tile.getAttribute("value")
+    id = tile.id
+    tile.classList.remove('active-tile')
+    if (event.target.tagName === "TD") {
+      if (event.target.className === "double-letter") {
+          //event.target.classList.add("double-letter-picked")
+          event.target.style = "background: #AADDEE;"
+      }
       event.target.classList.add("board-letter-tile")
       event.target.innerHTML = `<span class="letter-on-tile">${letter}</span><span class="tiny-space"> </span><sub class="score-on-tile">${value}</sub>`
+      tile.innerHTML = ""
     }
+    else if (event.target.tagName === "IMG") {
+      event.target.parentElement.classList.add("board-letter-tile")
+      event.target.parentElement.innerHTML = `<span class="letter-on-tile">${letter}</span><span class="tiny-space"> </span><sub class="score-on-tile">${value}</sub>`
+      tile.innerHTML = ""
+    }
+    fetch(`http://localhost:3000/letters/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    })
   })
 }
 
@@ -152,7 +170,34 @@ function getAllPlayerIds() {
     return playerIds
 }
 
+function listenToFinishWordButton() {
+  let index = 0
+  const finishWord = document.querySelector('#draw-new-letters')
+  finishWord.addEventListener('click', function(event) {
+      if (index === playerIds.length) {
+        index = 0
+      }
+      grabNewTiles(playerIds[index]+ (playerIds.length))
+      index += 1
+  })
+}
+
+function grabNewTiles(id) {
+  fetch('http://localhost:3000/players/draw_replacements', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({id: id})
+  })
+}
+
+
+
 createForm(makeNewGameButton())
 listenToNewGameForm()
 listenToNextTurnButton()
 listenToLetterTiles()
+listenToBoardTiles()
+listenToFinishWordButton()
