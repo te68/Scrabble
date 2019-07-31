@@ -49,6 +49,10 @@ body{
     background: #EBC;
 }
 
+board{
+    font-size:8em;
+}
+
 #table-container{
     text-align:CENTER;
     /* background: white; */
@@ -95,4 +99,48 @@ body{
     width: 50px;
     height: 20px;
     background: #f5c283;
+}
+
+.letter-tile{
+    font-size: 8em;
+    width:50px;
+    height:50px;
+    padding:5px;
+    background: #FFF8DC;
+}
+
+.board-letter-tile{
+    font-size: 7em;
+    width:50px;
+    height:50px;
+    padding:1px;
+    background: #FFF8DC;
+}
+
+.letter-on-tile {
+    font-size: 1em;
+    text-align:center;
+}
+
+.score-on-tile  {
+    padding-top:1em;
+    font-size: 0.5em;
+}
+
+.tiny-space{
+    font-size:0.5em;
+}
+
+#player-tiles-container{
+    text-align:center;
+    margin-left:20%;
+}
+
+#next-turn{
+
+}
+
+#next-turn:hover{
+    cursor:pointer;
+    background:yellow;
 }

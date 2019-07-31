@@ -13,7 +13,7 @@
 
 
     </div>
-
+<br>
     <div id="table-container">
         <table id="board">
         <!-- first row -->
@@ -296,8 +296,26 @@
                 <td>R3,C12</td>
                 <td>R3,C14</td>
                 <td class="double-letter">DOUBLE LETTER SCORE</td>
-        </tr>
+            </tr>
         </table>
+
+        <div id="player-tiles-container">
+            <h2 id="player-name"></h2>
+            <table id="player-tiles">
+                <tr id="player-tile-row">
+                    <td class="letter-tile"></td>
+                    <td class="letter-tile"></td>
+                    <td class="letter-tile"></td>
+                    <td class="letter-tile"></td>
+                    <td class="letter-tile"></td>
+                    <td class="letter-tile"></td>
+                    <td class="letter-tile"></td>
+                </tr>
+            </table>
+            <button id="next-turn">Next Turn</button>
+        </div>
+    </div>
+
     <table id="tiles-and-quantities">
             <tr class="t-and-q-row">
                 <th class="t-and-q-cell">Letter</th>  <th class="t-and-q-cell">Score</th>
@@ -406,6 +424,11 @@
                 <td class="t-and-q-cell">Z</td> - <td class="t-and-q-cell">1</td>
             </tr>
     </table>
-</div>
+
+<br>
+<br>
+
+
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </html>
