@@ -88,6 +88,19 @@ td:hover{
     background: #AADDEE;
 }
 
+.triple-letter{
+  background: #4499FF;
+}
+
+.double-word{
+  background: #FFAAAA;
+}
+
+.triple-word{
+    /* color:white; */
+    background: #FE4222;
+}
+
 .scoreboard-container{
   text-align:center;
 }

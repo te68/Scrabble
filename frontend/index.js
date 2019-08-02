@@ -54,6 +54,18 @@ function clearBoard() {
         tile.classList.remove("board-letter-tile")
         tile.innerHTML = "DOUBLE LETTER SCORE"
       }
+      else if (tile.className.includes("triple-word")) {
+        tile.classList.remove("board-letter-tile")
+        tile.innerHTML = "TRIPLE WORD SCORE"
+      }
+      else if (tile.className.includes("double-word")) {
+        tile.classList.remove("board-letter-tile")
+        tile.innerHTML = "DOUBLE WORD SCORE"
+      }
+      else if (tile.className.includes("triple-letter")) {
+        tile.classList.remove("board-letter-tile")
+        tile.innerHTML = "TRIPLE LETTER SCORE"
+      }
       else if (tile.id === "center-star-cell") {
         tile.innerHTML = `<img src="./stylesheets/center-star.png" id="center-star-picture">`
       }
@@ -171,6 +183,15 @@ function listenToBoardTiles(letter, value, id) {
     if (event.target.tagName === "TD") {
       if (event.target.className === "double-letter") {
           event.target.style = "background: #AADDEE;"
+      }
+      else if (event.target.className === "triple-word") {
+          event.target.style = "background: #FE4222;"
+      }
+      else if (event.target.className === "triple-letter") {
+          event.target.style = "background: #4499FF;"
+      }
+      else if (event.target.className === "double-word") {
+          event.target.style = "background: #FFAAAA;"
       }
       event.target.classList.add("board-letter-tile")
       event.target.innerHTML = `<span class="letter-on-tile">${letter}</span><span class="tiny-space"> </span><sub class="score-on-tile">${value}</sub>`
