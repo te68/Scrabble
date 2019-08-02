@@ -10,8 +10,13 @@ def show
   render json: PlayerSerializer.new(player).to_serialized_json
 end
 
-# def create
-# end
+def update
+  player = Player.find(params[:id])
+  oldScore = player.score
+  newScore = oldScore + params[:score].to_i
+  player.update(score: newScore)
+  render json: PlayerSerializer.new(player).to_serialized_json
+end
 
 def start_new_game
   Letter.delete_all()
