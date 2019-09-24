@@ -12,13 +12,13 @@
  }
 
  function createForm(newGameButton) {
+   //create the form for new players
    newGameFormLocation = document.querySelector('.new-game-form')
    newGameForm = document.createElement('form')
    newGameForm.id = "new-game-form"
    newGameFormLocation.appendChild(newGameForm)
    //create 4 inputs for player names
    for (let i = 0; i < 4; i++) {
-     newInputField = document.createElement("input")
      newInputField = document.createElement("input")
      newInputField.className="player-input"
      newInputField.setAttribute("placeholder", `Player ${i + 1} Name`)
@@ -35,21 +35,24 @@
      let names = Array.from(newGameForm.children).map(function(box){
        return box.value
      })
+     //remove all tiles from the board
      clearBoard()
+     //reset the database
      resetGame(names)
      //empty form
      Array.from(newGameForm.children).slice(0,4).forEach( child => {
         child.value = ''
      })
    })
-
  }
 
 function clearBoard() {
   const board = Array.from(document.querySelector('#board').children[0].children)
   board.forEach(function(row){
     const iterableRow = (Array.from(row.children))
+    //iterate through entire board
     iterableRow.forEach(function(tile){
+      //remove the active tile class and remake all special tiles
       if (tile.className.includes("double-letter")) {
         tile.classList.remove("board-letter-tile")
         tile.innerHTML = "DOUBLE LETTER SCORE"
@@ -67,9 +70,11 @@ function clearBoard() {
         tile.innerHTML = "TRIPLE LETTER SCORE"
       }
       else if (tile.id === "center-star-cell") {
+        //put the picture back
         tile.innerHTML = `<img src="./stylesheets/center-star.png" id="center-star-picture">`
       }
       else {
+        //clear all regular tiles
         tile.innerHTML = ""
       }
     })
@@ -78,6 +83,7 @@ function clearBoard() {
 
 async function resetGame(names) {
   //fetch custom controller action: start-new-game
+  //deletes all of the tiles and builds starting set of tiles
   nameString = names.join(",")
   let resetGameData = fetch('http://localhost:3000/players/start-new-game', {
     method: "POST",
@@ -103,7 +109,6 @@ async function resetGame(names) {
   getAllPlayerIds()
   //add scoreboard
   createScoreboard()
-  //fetchAPlayer()
 }
 
 
@@ -119,6 +124,7 @@ function fetchAPlayer(id) {
 
 function listenToNextTurnButton() {
   let index = 0
+  //index of player whose turn it is
   document.querySelector("#next-turn").addEventListener("click", function() {
     if (index === playerIds.length) {
       index = 0
@@ -129,21 +135,28 @@ function listenToNextTurnButton() {
 }
 
 function fillPlayerTiles(playerJSON){
+  //grab the letters from the current player
   let playerLetters = playerJSON.letters
   let playerNameInHeading = document.querySelector("#player-name")
+  //add heading to the player's tile table
   playerNameInHeading.innerText = `${playerJSON.name}'s Tiles`
   let playerTiles = document.querySelector("#player-tiles").children[0].children[0].children //[<td>, <td>]
+  //loop through the table object and player's tiles at the same time
+  //placing each letter in each tile
   for (let i = 0; i < playerLetters.length; i++) {
     playerTiles[i].innerHTML = `<span class="letter-on-tile">${playerLetters[i].name}</span><span class="tiny-space"> </span><sub class="score-on-tile">${playerLetters[i].value}</sub>`
     playerTiles[i].setAttribute("letter", playerLetters[i].name)
     playerTiles[i].setAttribute("value", playerLetters[i].value)
     playerTiles[i].id = playerLetters[i].id
   }
+  //fetch the api for the current player whose tiles are displayed
+  //check if the bag is empty or not
   const player1 = fetch(`http://localhost:3000/players/1`)
   player1
   .then(res => res.json())
   .then(body => {
     if (!gameOver && body.letters.length === 0) {
+      //alert players there is no letters left
       alert('Bag of letters is empty')
       gameOver = true
     }
@@ -181,6 +194,7 @@ function listenToBoardTiles(letter, value, id) {
     id = tile.id
     //fill the board with attributes
     if (event.target.tagName === "TD") {
+      //account for all special tiles by setting their background color
       if (event.target.className === "double-letter") {
           event.target.style = "background: #AADDEE;"
       }
@@ -193,10 +207,13 @@ function listenToBoardTiles(letter, value, id) {
       else if (event.target.className === "double-word") {
           event.target.style = "background: #FFAAAA;"
       }
+      //change class no board tile and put letter on the board tile
       event.target.classList.add("board-letter-tile")
       event.target.innerHTML = `<span class="letter-on-tile">${letter}</span><span class="tiny-space"> </span><sub class="score-on-tile">${value}</sub>`
+      //clear the tile on the player's tiles
       tile.innerHTML = ""
     }
+    //account for the centern tie with the star
     else if (event.target.tagName === "IMG") {
       event.target.parentElement.classList.add("board-letter-tile")
       event.target.parentElement.innerHTML = `<span class="letter-on-tile">${letter}</span><span class="tiny-space"> </span><sub class="score-on-tile">${value}</sub>`
@@ -215,6 +232,7 @@ function listenToBoardTiles(letter, value, id) {
 
 
 async function getAllPlayerIds() {
+  //fetch all the players
   allPlayerIds = fetch(PLAYERS_URL)
   waitForAllPlayerIds = await allPlayerIds
   allPlayerIds
@@ -223,6 +241,7 @@ async function getAllPlayerIds() {
     allPlayerObjs.filter(playerObj => {
       return playerObj.id != 1
     }).forEach(playerObj => {
+      //add ids to the id array
       playerIds.push(playerObj.id)
       //console.log(`${playerObj.id} is in`)
     })
@@ -230,6 +249,8 @@ async function getAllPlayerIds() {
 }
 
 async function grabNewTiles(id) {
+  //fetch custom route draw replacements
+  //refills the players tiles after their turn
   const grabbingTiles = fetch('http://localhost:3000/players/draw_replacements', {
     method: "POST",
     headers: {
@@ -239,6 +260,7 @@ async function grabNewTiles(id) {
     body: JSON.stringify({id: id})
   })
   let tileChanges = await grabbingTiles
+  //display the new tiles
   fetchAPlayer(id)
 }
 
@@ -275,9 +297,9 @@ function createScoreboard() {
 }
 
 function addNameHeadersToScoreboard(names) {
+    //create a row for the names
     let newRow =  document.createElement("tr")
     newRow.className = "scoreboard-name-header"
-
     names.forEach(function(name) {
       let playerNameHeader = document.createElement("th")
       playerNameHeader.style.width = '4em'
@@ -297,7 +319,7 @@ function addScoreInputFormForEachPlayer(ids) {
         newTDThatHoldsInput.className ="player-name-header"
         let newScoreInputForm = document.createElement("form")
         newScoreInputForm.id = id
-        newScoreInputForm.innerHTML = `<input type="text" size = "12" placeholder="Enter Score" id="score-input-for-player-id-${id}"> </input>
+        newScoreInputForm.innerHTML = `<input type="text" size = "12" placeholder="Enter Score" id="score-input-for-player-id-${id}" class="score-input"> </input>
         <input type="submit" value="Submit" class="score-submit-button"></input>`
         newTDThatHoldsInput.appendChild(newScoreInputForm)
         newRow2.appendChild(newTDThatHoldsInput)

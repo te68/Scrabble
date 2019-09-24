@@ -30,8 +30,8 @@ td:hover{
   border: 4px solid black;
   /* align:center; */
   overflow: hidden;
-  top:2em;
-  right:17em;
+  top:6.1em;
+  left:41.2em;
   position:absolute;
   text-align: center;
   border-collapse: collapse;
@@ -72,6 +72,22 @@ td:hover{
   font-family: 'Fredoka One';
 }
 
+.score-input{
+  font-family: 'Fredoka One', cursive;
+  font-size:0.63em;
+  border-radius:5px;
+  width:85px;
+  background-color:#FFFFE0;
+}
+
+
+.score-submit-button{
+  /* background-color:red; */
+    font-family: 'Fredoka One', cursive;
+    border-radius:5px;
+    margin:1px;
+}
+
 .score-submit-button:hover{
   cursor:pointer;
   background-color:#C7D59F;
@@ -80,7 +96,12 @@ td:hover{
 }
 
 .score-submit-button:focus{
+  border-radius: 5px;
+}
+
+.score-submit-button:active{
   /* border: 3px solid lightgreen; */
+  background-color:pink;
   border-radius: 5px;
 }
 
@@ -107,7 +128,7 @@ td:hover{
 
 .scoreboard-heading{
   font-family: 'Fredoka One';
-  font-size:2em;
+  font-size:1.5em;
   text-decoration: underline;
 }
 
@@ -132,6 +153,8 @@ td:hover{
 
 body{
     background: #EBC;
+    min-width: 1432px;
+    /* font-family: 'Fredoka One'; */
 }
 
 #board{
@@ -215,6 +238,8 @@ body{
 
 .player-input{
   margin-right: 4px;
+  background-color:#FFFFE0;
+  border-radius:5px;
 }
 
 .score-on-tile  {
@@ -226,10 +251,27 @@ body{
     font-size:0.3em;
 }
 
+.player-input{
+  font-size:1.1em;
+  font-family: 'Fredoka One', cursive;
+}
+
+#new-game-button{
+  font-size:1.1em;
+  font-family: 'Fredoka One', cursive;
+  border-radius:5px;
+}
+
+#new-game-button:hover{
+  background:lightgrey;
+  border:1px solid black;
+  /* border-radius:5px; */
+}
+
 #player-tiles-container{
   overflow: hidden;
-  top:18em;
-  right:0.5em;
+  top:24em;
+  left:60.5em;
   position:absolute;
   /* works */
     text-align:center;
@@ -237,7 +279,8 @@ body{
 }
 
 #player-tiles{
-
+  /* background:#EBC;
+  border-color:#EBC; */
 }
 
 #next-turn{
@@ -254,3 +297,37 @@ body{
     background:lightgrey;
     border: 1px solid black;
 }
+
+
+.stage {
+        display: flex;
+        height: 70px;
+        width: 100%;
+        padding-bottom:20px;
+        padding-top:10px;
+    }
+    .box {
+        align-self: flex-end;
+        font-family: "Fredoka One";
+        font-size:3em;
+        text-align:center;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite;
+        background-color: #EBC;
+        height: 50px;
+        margin-left:40%;
+        transform-origin: bottom;
+        width: auto;
+        pad
+    }
+    .bounce-4 {
+        animation-name: bounce-4;
+        animation-timing-function: ease;
+    }
+    @keyframes bounce-4 {
+        0%   { transform: scale(1,1)    translateY(0); }
+        10%  { transform: scale(1.1,.9) translateY(0); }
+        30%  { transform: scale(.9,1.1) translateY(-30px); }
+        50%  { transform: scale(1,1)    translateY(0); }
+        100% { transform: scale(1,1)    translateY(0); }
+    }
